@@ -21,7 +21,7 @@ Model.prototype.create = function(data, cb) {
   const value = [Object.values(data)];
   const baseQuery = format(
       `
-      INSERT INTO ${this.table} (%I) VALUES %L RETURNING *
+      INSERT INTO ${this.table} (%s) VALUES %L RETURNING *
       `,
       column,
       value,
