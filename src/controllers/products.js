@@ -15,6 +15,19 @@ module.exports = {
       }
     });
   },
+  detail: (req, res)=> {
+    product.find({where: {id: req.params.id}}, (err, result)=> {
+      if (result) {
+        return res.send({
+          success: true,
+          message: 'List product',
+          results: result.rows,
+        });
+      } else {
+        console.log(err);
+      }
+    });
+  },
   create: (req, res)=> {
     product.create(req.body, (err, results)=> {
       if (results) {
