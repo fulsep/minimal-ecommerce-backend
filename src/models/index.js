@@ -37,7 +37,6 @@ Model.prototype.find = function(cond, cb) {
     };
   }
   const condition = this.condition(cond);
-  console.log(condition);
   const baseQuery = format(
       `
       SELECT * FROM ${this.table} WHERE ${condition.string}
