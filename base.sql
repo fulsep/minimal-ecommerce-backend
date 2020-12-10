@@ -39,9 +39,9 @@ CREATE TABLE user_addresses (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   address TEXT NOT NULL,
-  lat VARCHAR (10),
-  lng VARCHAR (10),
-  isPrimary BOOLEAN DEFAULT FALSE NOT NULL
+  lat VARCHAR (10) DEFAULT '0',
+  lng VARCHAR (10) DEFAULT '0',
+  isPrimary BOOLEAN DEFAULT FALSE NOT NULL,
   userId INT NOT NULL
 );
 
