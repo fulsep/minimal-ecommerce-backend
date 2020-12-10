@@ -3,8 +3,7 @@ const profile = new Users();
 
 module.exports = {
   get: (req, res)=> {
-    // const {id} = req.authUser
-    const id = 1;
+    const {id} = req.authUser;
     profile.find({where: {id}}, (err, result)=> {
       if (result) {
         delete result.rows[0].password;
@@ -22,8 +21,7 @@ module.exports = {
     });
   },
   update: (req, res)=> {
-    // const {id} = req.authUser
-    const id = 1;
+    const {id} = req.authUser;
     profile.update({where: {id}}, req.body, (err, result)=>{
       if (result) {
         delete result.rows[0].password;
