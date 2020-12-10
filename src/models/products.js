@@ -3,7 +3,7 @@ const Model = require('./index');
 
 function Products() {
   this.table = 'products';
-  // this.column = ['name', 'price', 'quantity'];
+  // this.column = [];
 }
 
 Products.prototype = new Model();
