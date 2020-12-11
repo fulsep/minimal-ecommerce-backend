@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use(morgan('dev'));
 
+const uploadDirectory = __dirname.concat('/../uploads');
+app.use('/uploads', express.static(uploadDirectory));
 
 // Router import
 const router = require('./routes');
