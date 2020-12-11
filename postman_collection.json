@@ -18,7 +18,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "anwarxxxx@mail.com",
+									"value": "anwar@mail.com",
 									"type": "text"
 								},
 								{
@@ -29,14 +29,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/login",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/login",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"login"
 							],
@@ -71,7 +68,7 @@
 								},
 								{
 									"key": "email",
-									"value": "anwarxxxx@mail.com",
+									"value": "anwar@mail.com",
 									"type": "text"
 								},
 								{
@@ -82,14 +79,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/register",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/register",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"register"
 							]
@@ -111,7 +105,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjA3NjAwMzk1fQ.0QiGJDkeX8Lc1PEjaa5J0aqXY8GVWRpEcleHnQQq49U",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -119,14 +113,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/profile",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/profile",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"profile"
 							]
@@ -137,6 +128,16 @@
 				{
 					"name": "UPDATE PROFILE",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -144,20 +145,17 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "johnny",
+									"value": "Anwar Rohana",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/profile",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/profile",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"profile"
 							]
@@ -186,19 +184,16 @@
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": []
+									"src": "/Users/irul/Downloads/big_icon.png"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/profile/change_avatar",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/profile/change_avatar",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"profile",
 								"change_avatar"
@@ -229,14 +224,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/address",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/address",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"address"
 							]
@@ -285,14 +277,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/address",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/address",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"address"
 							],
@@ -323,17 +312,17 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Ugreen 3.5mm male to male Audio Braid cable ",
+									"value": "ASENARU iPhone 11/11 Pro/11 Pro Max Casing",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "79000",
+									"value": "99000",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "30",
+									"value": "100",
 									"type": "text"
 								},
 								{
@@ -345,14 +334,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/products",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/products",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"products"
 							]
@@ -366,14 +352,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/products",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/products",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"products"
 							]
@@ -402,14 +385,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/products/1",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/products/1",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"products",
 								"1"
@@ -424,14 +404,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/products/9",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/products/9",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"products",
 								"9"
@@ -462,14 +439,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/carts",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/carts",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"carts"
 							]
@@ -493,14 +467,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/carts/:id",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/carts/:id",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"carts",
 								":id"
@@ -508,7 +479,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "5"
+									"value": "7"
 								}
 							]
 						}
@@ -537,14 +508,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/checkout",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/checkout",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"checkout"
 							]
@@ -568,14 +536,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/checkout",
-							"protocol": "http",
+							"raw": "{{url}}api/v1/checkout",
 							"host": [
-								"localhost"
+								"{{url}}api"
 							],
-							"port": "8080",
 							"path": [
-								"api",
 								"v1",
 								"checkout"
 							]
