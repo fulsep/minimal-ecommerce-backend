@@ -1,27 +1,13 @@
-const Products = require('../models/products');
-const product = new Products();
+const Flashsale = require('../models/flashsale');
+const flashsale = new Flashsale();
 
 module.exports = {
   list: (req, res)=> {
-    product.find({offset: 0}, (err, result)=> {
+    flashsale.find({offset: 0}, (err, result)=> {
       if (result) {
         return res.send({
           success: true,
-          message: 'List products',
-          results: result.rows,
-        });
-      } else {
-        console.log(err);
-      }
-    });
-  },
-  detail: (req, res)=> {
-    const {productId} = req.params;
-    product.find({where: {id: productId}}, (err, result)=> {
-      if (result) {
-        return res.send({
-          success: true,
-          message: 'List product',
+          message: 'List Flashsale',
           results: result.rows,
         });
       } else {
@@ -30,12 +16,12 @@ module.exports = {
     });
   },
   create: (req, res)=> {
-    product.create(req.body, (err, results)=> {
+    flashsale.create(req.body, (err, results)=> {
       if (results) {
         console.log(results);
         return res.send({
           success: true,
-          message: 'Product has been added',
+          message: 'Flashsale has been added',
           results: results.rows[0],
         });
       } else {
@@ -47,8 +33,8 @@ module.exports = {
     });
   },
   update: (req, res)=> {
-    const {productId} = req.params;
-    product.update({where: {id: productId}}, req.body, (err, result)=> {
+    const {flashsaleId} = req.params;
+    flashsale.update({where: {id: flashsaleId}}, req.body, (err, result)=> {
       if (result) {
         return res.send({
           success: true,
@@ -64,8 +50,8 @@ module.exports = {
     });
   },
   delete: (req, res)=>{
-    const {productId} = req.params;
-    product.delete({where: {id: productId}}, (err, result)=> {
+    const {flashsaleId} = req.params;
+    flashsale.delete({where: {id: flashsaleId}}, (err, result)=> {
       if (result && result.rows.length > 0) {
         return res.send({
           success: true,
@@ -76,7 +62,7 @@ module.exports = {
         if (result.rows.length < 1) {
           return res.status(500).send({
             success: false,
-            message: `There is no data with id ${productId}`,
+            message: `There is no data with id ${flashsaleId}`,
           });
         } else {
           return res.status(500).send({
