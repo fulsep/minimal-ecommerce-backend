@@ -5,6 +5,8 @@ const format = require('pg-format');
 function Model() {
   this.table = 'table';
   this.column = [];
+  this.db = db;
+  this.format = format;
   this.condition = (cond)=> ({
     string: Object.keys(cond.where).map(
         (item)=>`${item}=%L`,

@@ -11,21 +11,31 @@ module.exports = {
           results: result.rows,
         });
       } else {
-        console.log(err);
+        return res.status(500).send({
+          success: false,
+          message: (err && err.message) || 'There is an error',
+        });
       }
     });
   },
   detail: (req, res)=> {
     const {productId} = req.params;
     product.find({where: {id: productId}}, (err, result)=> {
-      if (result) {
+      if (result && result.rows[0]) {
         return res.send({
           success: true,
           message: 'List product',
-          results: result.rows,
+          results: result.rows[0],
         });
       } else {
-        console.log(err);
+        if (result.rows.length < 1) {
+          err ={};
+          err.message = 'Product not found';
+        }
+        return res.status(500).send({
+          success: false,
+          message: (err && err.message) || 'There is an error',
+        });
       }
     });
   },
