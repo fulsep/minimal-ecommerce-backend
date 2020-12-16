@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "8093cde9-fba3-4104-b1e1-32bcb2041480",
+		"name": "Mentoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "anwar@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "asdasd",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Anwar",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "anwar@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/register",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORGOT PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "anwar@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/forgot_password",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RESET PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "new_password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/forgot_password/:code",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"forgot_password",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "7e2682f6-2175-4408-a48e-ec89fe36df28"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PROFILE",
+			"item": [
+				{
+					"name": "GET PROFILE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/profile",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PROFILE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Anwar Rohana",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/profile",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE AVATAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/irul/Downloads/big_icon.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/profile/change_avatar",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"profile",
+								"change_avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PRODUCTS",
+			"item": [
+				{
+					"name": "LIST PRODUCTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/products?page=1",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DETAIL PRODUCT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/products/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ADDRESSES",
+			"item": [
+				{
+					"name": "GET ADDRESS LIST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/addresses",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET ADDRESS PRIMARY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/addresses/:id/set_primary",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"addresses",
+								":id",
+								"set_primary"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD ADDRESS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Kantor 2",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Jl. Pesona Depok Estate II Blok B No. 2 RT.005/RW.022",
+									"type": "text"
+								},
+								{
+									"key": "recipient",
+									"value": "Irul",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "08122233444",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lng",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "isPrimary",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/addresses",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"addresses"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT ADDRESS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Kantor 5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Jl. Pesona Depok Estate II Blok B No. 2 RT.005/RW.022",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "recipient",
+									"value": "Irul",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "08122233444",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lat",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lng",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "isPrimary",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/addresses/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"addresses",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ADDRESS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/addresses/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"addresses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CARTS",
+			"item": [
+				{
+					"name": "GET CARTS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/carts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD ITEM DIRECT BY PARAMS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/carts/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"carts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CHECKOUT",
+			"item": [
+				{
+					"name": "PREVIEW INVOICE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/checkout",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GENERATE INVOICE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/checkout",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "INVOICES",
+			"item": [
+				{
+					"name": "LIST INVOICES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/invoices",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DETAIL INVOICE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/invoices/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f33557a6-b74e-49f0-829a-9a901f7fd355",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad6c9c9b-bc49-4951-be1b-096b7c9a233e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PAYMENT (NOT DONE YET)",
+			"item": [
+				{
+					"name": "CONFIRM PAYMENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/payment",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8f403c20-3084-4916-a127-e98a934758ea",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb9d0c11-ab57-4ed4-9d09-862138c8d051",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "SPECIAL (NOT DONE YET)",
+			"item": [
+				{
+					"name": "FLASH SALE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/flash_sale",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"flash_sale"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6660246-8167-4b04-96de-63fa395cf194",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c629ffe7-18bd-46c9-85b1-4ad0c4094fd4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
