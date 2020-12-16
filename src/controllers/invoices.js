@@ -6,6 +6,7 @@ const { Invoice, InvoiceItem } = require('../models/index');
 const { DATA_PAGE, DATA_LIMIT, DATA_SEARCH } = process.env;
 
 exports.list = async (req, res) => {
+  const { id: userId } = req.authUser;
   if (!req.matchedData.page) {
     req.matchedData.page = Number(DATA_PAGE);
   }
@@ -19,11 +20,12 @@ exports.list = async (req, res) => {
   const data = await Invoice.findAndCountAll({
     offset: (page * limit) - limit,
     limit,
-    // where: {
-    //   name: {
-    //     [Op.like]: `%${search}%`,
-    //   },
-    // },
+    where: {
+      // name: {
+      //   [Op.like]: `%${search}%`,
+      // },
+      userId,
+    },
   });
   const { rows: results, count } = data;
   const totalPage = Math.ceil(count / limit);
@@ -40,8 +42,9 @@ exports.list = async (req, res) => {
 
 exports.detail = async (req, res) => {
   const { id } = req.matchedData;
+  const { id: userId } = req.authUser;
   const results = await Invoice.findOne({
-    where: { id },
+    where: { id, userId },
     include: [
       {
         model: InvoiceItem,

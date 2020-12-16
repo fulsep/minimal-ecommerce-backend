@@ -15,7 +15,6 @@ exports.login = async (req, res) => {
       const verified = await bcrypt.compare(password, user.password);
       if (verified) {
         const { id } = user;
-        console.log(id);
         const token = jwt.sign(id);
         return response(res, 'Login success', { token });
       }
@@ -34,7 +33,7 @@ exports.register = async (req, res) => {
     const token = jwt.sign(results.id);
     if (results) {
       await UserDetail.create({
-        fullName: results.name,
+        fullName: req.matchedData.name,
         userId: results.id,
       });
       return response(res, 'Register Successfully', { token });

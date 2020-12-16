@@ -5,7 +5,9 @@ const invoiceController = require('../controllers/invoices');
 const { validation } = require('../helpers');
 const invoiceSchema = require('../helpers/schema/invoices');
 
-router.get('/invoices', checkSchema(invoiceSchema.list), validation, invoiceController.list);
-router.get('/invoices/:id', checkSchema(invoiceSchema.detail), validation, invoiceController.detail);
+const authMiddleware = require('../middlewares/auth');
+
+router.get('/invoices', authMiddleware.authCheck, checkSchema(invoiceSchema.list), validation, invoiceController.list);
+router.get('/invoices/:id', authMiddleware.authCheck, checkSchema(invoiceSchema.detail), validation, invoiceController.detail);
 
 module.exports = router;
