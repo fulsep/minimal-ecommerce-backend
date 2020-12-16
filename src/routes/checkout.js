@@ -5,7 +5,9 @@ const checkoutController = require('../controllers/checkout');
 const { validation } = require('../helpers');
 const checkoutSchema = require('../helpers/schema/checkout');
 
-router.get('/checkout', checkoutController.preview);
-router.post('/checkout', checkSchema(checkoutSchema.confirm), validation, checkoutController.confirm);
+const authMiddleware = require('../middlewares/auth');
+
+router.get('/checkout', authMiddleware.authCheck, checkoutController.preview);
+router.post('/checkout', authMiddleware.authCheck, checkSchema(checkoutSchema.confirm), validation, checkoutController.confirm);
 
 module.exports = router;

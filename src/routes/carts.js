@@ -5,7 +5,9 @@ const cartController = require('../controllers/carts');
 const { validation } = require('../helpers');
 const cartSchema = require('../helpers/schema/carts');
 
-router.get('/carts', checkSchema(cartSchema.list), validation, cartController.list);
-router.get('/carts/:id', checkSchema(cartSchema.addToCart), validation, cartController.addToCart);
+const authMiddleware = require('../middlewares/auth');
+
+router.get('/carts', authMiddleware.authCheck, checkSchema(cartSchema.list), validation, cartController.list);
+router.get('/carts/:id', authMiddleware.authCheck, checkSchema(cartSchema.addToCart), validation, cartController.addToCart);
 
 module.exports = router;

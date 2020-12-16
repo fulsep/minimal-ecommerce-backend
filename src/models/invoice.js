@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Invoice.hasMany(models.InvoiceItem, { foreignKey: 'invoiceId', as: 'products' });
     }
   }
   Invoice.init({
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     recipientPhone: DataTypes.STRING,
     shippingAddress: DataTypes.TEXT,
     invoiceStatus: DataTypes.ENUM('Unpaid', 'Canceled', 'Complete'),
+    total: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
   }, {
     sequelize,

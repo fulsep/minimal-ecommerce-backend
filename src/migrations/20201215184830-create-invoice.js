@@ -22,6 +22,9 @@ module.exports = {
       invoiceStatus: {
         type: Sequelize.ENUM('Unpaid', 'Canceled', 'Complete'),
       },
+      total: {
+        type: Sequelize.INTEGER,
+      },
       userId: {
         type: Sequelize.INTEGER,
       },

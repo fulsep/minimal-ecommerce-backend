@@ -1,33 +1,26 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('UserAddresses', {
+    await queryInterface.createTable('UserDetails', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      avatar: {
         type: Sequelize.STRING,
       },
-      recipient: {
+      fullName: {
         type: Sequelize.STRING,
+      },
+      gender: {
+        type: Sequelize.ENUM('Male', 'Female', 'Others'),
+      },
+      birthdate: {
+        type: Sequelize.DATEONLY,
       },
       phone: {
         type: Sequelize.STRING,
-      },
-      address: {
-        type: Sequelize.TEXT,
-      },
-      lat: {
-        type: Sequelize.STRING,
-      },
-      lng: {
-        type: Sequelize.STRING,
-      },
-      isPrimary: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -42,7 +35,7 @@ module.exports = {
       },
     });
   },
-  down: async (queryInterface) => {
-    await queryInterface.dropTable('UserAddresses');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('UserDetails');
   },
 };

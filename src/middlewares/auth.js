@@ -7,21 +7,26 @@ module.exports = {
       && req.headers.authorization.startsWith('Bearer')
     ) {
       const rawToken = req.headers.authorization.substr(7);
-      const authUser = jwt.check(rawToken);
-      if (authUser) {
-        req.authUser = authUser;
-        next();
-      } else {
-        res.status(401).send({
+      try {
+        const authUser = jwt.check(rawToken);
+        if (authUser) {
+          req.authUser = authUser;
+          return next();
+        }
+        return res.status(401).send({
+          success: false,
+          message: 'Unauthorized',
+        });
+      } catch (e) {
+        return res.status(401).send({
           success: false,
           message: 'Unauthorized',
         });
       }
-    } else {
-      res.status(401).send({
-        success: false,
-        message: 'Unauthorized',
-      });
     }
+    return res.status(401).send({
+      success: false,
+      message: 'Unauthorized',
+    });
   },
 };

@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { v4: uuid } = require('uuid');
-const { User, ResetRequest } = require('../models/index');
+const { User, ResetRequest, UserDetail } = require('../models/index');
 const { response, mailer, jwt } = require('../helpers');
 
 exports.login = async (req, res) => {
@@ -15,7 +15,8 @@ exports.login = async (req, res) => {
       const verified = await bcrypt.compare(password, user.password);
       if (verified) {
         const { id } = user;
-        const token = jwt.sign({ id });
+        console.log(id);
+        const token = jwt.sign(id);
         return response(res, 'Login success', { token });
       }
     } catch (e) {
@@ -30,8 +31,12 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
   try {
     const results = await User.create(req.matchedData);
-    const token = jwt.sign({ id: results.id });
+    const token = jwt.sign(results.id);
     if (results) {
+      await UserDetail.create({
+        fullName: results.name,
+        userId: results.id,
+      });
       return response(res, 'Register Successfully', { token });
     }
   } catch (e) {

@@ -1,12 +1,11 @@
-const { Op, Sequelize } = require('sequelize');
+const { Op } = require('sequelize');
 const qs = require('querystring');
 const { response } = require('../helpers');
-const { Product, Cart } = require('../models/index');
+const { Invoice, InvoiceItem } = require('../models/index');
 
 const { DATA_PAGE, DATA_LIMIT, DATA_SEARCH } = process.env;
 
 exports.list = async (req, res) => {
-  const { id: userId } = req.authUser;
   if (!req.matchedData.page) {
     req.matchedData.page = Number(DATA_PAGE);
   }
@@ -17,23 +16,14 @@ exports.list = async (req, res) => {
     req.matchedData.search = DATA_SEARCH;
   }
   const { page, limit, search } = req.matchedData;
-  const data = await Cart.findAndCountAll({
-    where: {
-      userId,
-    },
+  const data = await Invoice.findAndCountAll({
     offset: (page * limit) - limit,
     limit,
-    include: [
-      {
-        model: Product,
-        as: 'product',
-        where: {
-          name: {
-            [Op.like]: `%${search}%`,
-          },
-        },
-      },
-    ],
+    // where: {
+    //   name: {
+    //     [Op.like]: `%${search}%`,
+    //   },
+    // },
   });
   const { rows: results, count } = data;
   const totalPage = Math.ceil(count / limit);
@@ -45,22 +35,22 @@ exports.list = async (req, res) => {
     nextLink: page < totalPage ? `?${qs.stringify({ ...req.query, ...{ page: page + 1 } })}` : null,
     prevLink: page > 1 && page < totalPage ? `?${qs.stringify({ ...req.query, ...{ page: page - 1 } })}` : null,
   };
-  return response(res, 'List of Products on Cart', { results, pageInfo });
+  return response(res, 'List of Invoice', { results, pageInfo });
 };
 
-exports.addToCart = async (req, res) => {
+exports.detail = async (req, res) => {
   const { id } = req.matchedData;
-  const { id: userId } = req.authUser;
-  const results = await Product.findOne({ where: { id } });
+  const results = await Invoice.findOne({
+    where: { id },
+    include: [
+      {
+        model: InvoiceItem,
+        as: 'products',
+      },
+    ],
+  });
   if (results) {
-    const existing = await Cart.findOne({ where: { productId: results.id, userId } });
-    let final = '';
-    if (existing) {
-      final = await existing.update({ amount: existing.amount + 1 });
-    } else {
-      final = await Cart.create({ amount: 1, productId: results.id, userId });
-    }
-    return response(res, 'Add Product', { results: final });
+    return response(res, 'Detail Invoice', { results });
   }
   return response(res, 'Data not found', {}, 404);
 };
