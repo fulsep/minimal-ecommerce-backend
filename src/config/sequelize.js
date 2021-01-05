@@ -12,6 +12,10 @@ module.exports = {
     host: PGHOST,
     port: PGPORT,
     dialect: 'postgres',
+    pool: {
+      max: 5,
+      min: 3,
+    },
   },
   test: {
     username: PGUSER,
