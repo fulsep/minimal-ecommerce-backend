@@ -49,7 +49,7 @@ exports.list = async (req, res) => {
 };
 
 exports.addToCart = async (req, res) => {
-  const { id } = req.matchedData;
+  const { id } = req.params;
   const { id: userId } = req.authUser;
   const results = await Product.findOne({ where: { id } });
   if (results) {
